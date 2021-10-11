@@ -1,0 +1,711 @@
+SESSION: Exceptional Handling
+Q. 81: Simple Exception
+QUESTION DESCRIPTION
+
+Write a Java program by using BufferedReader class to prompt a user to input his/her name and then the output will be as shown in test cases below
+
+Mandatory
+1.Create a method called "printName" inside the main class (Test Class) with no arguments.
+2. Use try and catch block to satisfy exceptional handling inside the "printName" method.
+3. Inside catch method use the following class in the argument
+catch(IOException e)
+
+=========================================================================================================================
+CODE ;
+
+import java.io.*;
+import java.util.*;
+import java.io.FileReader;
+import java.io.IOException;
+
+
+public class TestClass
+{
+    public static void printName()
+    {
+      Scanner s = new  Scanner(System.in);
+     // String name ;
+      try 
+      {
+          BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
+          String name = r.readLine();
+          System.out.println("Hello " + name);
+        
+          
+      } 
+      
+     catch(IOException e)
+      {
+      }  
+    }
+
+	public static void main(String[] args) 
+	{ 
+	printName();	
+	}
+}
+
+
+=========================================================================================================================
+                                                    NEXT QUESTION 
+=========================================================================================================================
+
+Q. 82: User Defined Exception
+QUESTION DESCRIPTION
+
+In TestClass the class should have the following fields:
+
+1. The "description" field is a String object that holds a brief description of the item.
+
+2. The "unitsOnHand" field is an int variable that holds the number of units currently in inventory.
+
+3. The "price" field is a double that holds the items retail price.
+
+Create a member method which reads the above three details and stores them in the corresponding fields.
+
+1. Write an exception class named "NegativePriceException" that can be instantiated and thrown when a negative number is given for the price.
+For negative price, display the error message "Price cannot be Negative".
+Hint: throw new NegativePriceException()
+
+2. Write another exception class named "NegativeHandException" that can be instantiated and thrown when a negative number is given for the units on hand.
+Hint: throw new NegativeHandException()
+
+For negative units on hand, display the error message "Units on hand cannot be Negative"
+
+Create two class "NegativeHandException" that extends Exception class and "NegativePriceException" that extends Exception class with default constructor
+TEST CASE 1
+
+INPUT
+Shirt
+10
+50.25
+OUTPUT
+Details stored successfully
+
+
+
+
+=========================================================================================================================
+CODE ;
+
+
+import java.util.*;
+public class TestClass{ 
+  public static void main(String[] args) {
+  yugen();
+}
+   public static void yugen(){
+    Scanner in = new Scanner(System.in); 
+    String description = in.nextLine();
+    int unitsOnHand = in.nextInt(); 
+    double price = in.nextDouble();
+   try
+ {
+    if(unitsOnHand<0)
+    throw new NegativePriceException("Units on hand cannot be Negative");
+    else if(price<0)
+    throw new  NegativePriceException("Price cannot be Negative");
+    else 
+    System.out.print("Details stored successfully"); 
+  }
+ catch(NegativePriceException e)
+   {
+   System.out.print(e.getMessage());
+   }
+
+ }
+}
+class NegativePriceException extends Exception
+{
+    public NegativePriceException(String str){
+    super(str);
+    }
+}
+class NegativeHandException extends Exception{}
+   
+
+=========================================================================================================================
+                                                    NEXT QUESTION 
+=========================================================================================================================
+
+Q. 83: Binary to Decimal - Userdefined Exception
+QUESTION DESCRIPTION
+
+Write a Java program to convert Binary to Decimal number using User defined Exception
+
+Help:
+
+1. Create a class "BinaryFormatException" extends NumberFormatException
+
+2. Create a Parameterised Constructor under "BinaryFormatException" class as follows
+
+a. Method Name = BinaryFormatException
+b. Access Specifier = public
+c. Argument = One Argument with String type and variable name "msg"
+d. Use super(msg)
+
+3. In the main method get the input of binary number and call the static method under main class (TestClass)
+
+a. Method name = binToDecimal
+b. Parameter = One argument with String type
+c. If number is not binary then throw exception message as "Number is not Binary"
+
+Hint:
+throw new BinaryFormatException("Number is not Binary")
+
+4. Use catch block with user defined exception as "BinaryFormatException" with exception instance as "e"
+
+5. Print the exception message "e" whenever the exception is thrown from methods
+TEST CASE 1
+
+INPUT
+1111
+OUTPUT
+15
+
+
+
+
+=========================================================================================================================
+
+CODE ;
+
+
+import java.io.*;
+import java.util.*;
+import java.io.FileReader;
+import java.io.IOException;
+
+class BinaryFormatException extends NumberFormatException
+{
+ 
+ public BinaryFormatException(String msg)
+ {
+  super(msg);
+  
+  }
+     public void binToDecimal(String st)
+   {
+
+      boolean flag=true;
+
+       char[] ch=st.toCharArray(); 
+       for(int i=0;i<ch.length; i++)
+       {
+
+      if(ch[i]=='1' || ch[i]=='0')
+      {
+
+      }  
+       else
+       {
+
+        flag=false;
+
+        throw new BinaryFormatException("Number is not Binary");
+       }
+       }
+   
+ 
+  if(flag){
+   System.out.println(Integer.parseInt(st,2));
+  }
+ 
+}
+ 
+ 
+ 
+ }
+
+public class TestClass
+{
+   
+
+	public static void main(String[] args) 
+	{
+       Scanner s = new Scanner(System.in);
+      String str =s.nextLine();	 
+      BinaryFormatException er = new BinaryFormatException(str);
+      try
+      {
+         er.binToDecimal(str); 
+        
+	  }
+	 catch(BinaryFormatException e)
+	 {
+        
+        System.out.println(e);
+	    
+	 }
+	}
+	  
+}
+
+=========================================================================================================================
+                                                    NEXT QUESTION 
+=========================================================================================================================
+
+
+Q. 84: Test Scores using Exceptional Handing
+QUESTION DESCRIPTION
+
+Do the following in the TestClass
+
+1. Create a Class Constructor and the class constructor should accept an array of test scores as its argument.
+
+2. The class should have a method that returns the average of the test scores.
+
+3. If any test score in the array is negative or greater than 100, the class should throw an "IllegalArgumentException". Demonstrate the class in a program.
+
+4. The class in catch block is "IllegalArgumentException" with exception instance as "e"
+
+5. Print the exception if any of the input is negative or greater than 100
+TEST CASE 1
+
+INPUT
+5
+50 20 30 60 45
+OUTPUT
+41.0
+
+
+
+
+=========================================================================================================================
+CODE ;
+
+import java.util.*;
+class TestClass
+{
+public static void main(String args[])
+{
+
+ yugi();
+}
+
+public static void yugi() 
+{
+
+Scanner in = new Scanner(System.in); 
+int n=in.nextInt(); 
+int[] arr=new int[n]; 
+float avg=0;
+for(int e=0;e<n;e++)
+{
+arr[e]=in.nextInt();
+
+avg+=arr[e];
+
+} 
+avg=avg/n;
+ 
+ try{
+ 
+
+        if(!chck(arr,n))
+           {
+              throw new IllegalArgumentException();
+             }
+          System.out.print(avg);  
+}
+catch(IllegalArgumentException e)
+{
+System.out.println(e);
+}
+}
+    public static boolean chck(int y[],int u)
+    {
+
+        for(int r=0;r<u;r++) 
+         
+
+       if(y[r]<0 || y[r]>100)
+         
+          return false; 
+         
+       
+    return true;
+    }
+   }
+ 
+ 
+
+
+=========================================================================================================================
+                                                    NEXT QUESTION 
+=========================================================================================================================
+  
+Q. 85: Handling String Index Out of Bound Exception
+QUESTION DESCRIPTION
+
+Write a java program which throw an String Index Out of Bound Exception
+
+Mandatory
+1. Use try and catch block to satisfy exceptional handling techniques.
+2. Inside catch method use the following class in the argument
+
+catch(StringIndexOutOfBoundsException e)
+
+3. If the index is out of range then Print the ArithmeticException object "e" using
+
+System.out.println(e) and it will return the output as follows "java.lang.StringIndexOutOfBoundsException: String index out of range"
+
+4.If the index is within the range print the character at the specific index.
+
+
+
+
+=========================================================================================================================
+
+CODE ;
+
+import java.util.*; 
+public class TestClass
+{
+
+
+public static void main(String[] args)
+{
+
+Scanner sc = new Scanner(System.in);
+  String name = sc.nextLine();
+      int n = name.length();
+      int num = sc.nextInt();
+try
+{ 
+      
+      
+      System.out.println(name.charAt(num));
+    
+}
+
+catch(StringIndexOutOfBoundsException e)
+{
+
+System.out.println(e);
+  
+//System.out.println("String index out of range: "+num);
+
+}
+}
+}
+
+=========================================================================================================================
+                                                    NEXT QUESTION 
+=========================================================================================================================
+
+Q. 86: Arithmetic exception
+QUESTION DESCRIPTION
+
+Mandatory:
+
+1. Use try and catch block to satisfy exceptional handling techniques.
+2. Inside catch method use the following class in the argument
+
+catch(ArithmeticException e)
+
+3. Print the ArithmeticException object "e" using
+
+System.out.println(e) and it will return the output as follows "java.lang.ArithmeticException: / by zero"
+TEST CASE 1
+
+INPUT
+78
+12
+OUTPUT
+6
+
+
+=========================================================================================================================
+
+CODE ;
+
+
+
+import java.util.*; 
+public class TestClass
+{
+
+    
+public static void main(String[] args)
+{
+
+Scanner sc = new Scanner(System.in);
+ int a  = sc.nextInt();
+ int b = sc.nextInt();
+try
+
+{ 
+    int c = a/b;
+     System.out.println(c);
+
+}
+
+catch(ArithmeticException e)
+{
+
+System.out.println(e);
+
+}
+}
+}
+
+
+
+
+=========================================================================================================================
+                                                    NEXT QUESTION 
+=========================================================================================================================
+
+. 87: Validating number - Integer
+QUESTION DESCRIPTION
+
+Write a java program to check whether user entered input is number or not.
+
+Mandatory:
+
+1. Use try and catch block to satisfy exceptional handling techniques.
+
+2.In catch block use InputMismatchException class and create an object names "e"
+catch(InputMisMatchException e)
+
+3.If the input is not a number, then print the exception object "e" as
+System.out.println(e)
+TEST CASE 1
+
+INPUT
+9827343
+OUTPUT
+Valid Number
+
+
+
+
+=========================================================================================================================
+ 
+
+CODE ;
+
+import java.util.*; 
+public class TestClass
+{
+
+
+public static void main(String[] args)
+{
+
+Scanner sc = new Scanner(System.in);
+ 
+try
+
+{ 
+     int a = sc.nextInt();
+     
+     System.out.println("Valid Number");
+
+}
+
+catch(InputMismatchException e)
+{
+
+System.out.println(e);
+
+}
+}
+}
+
+
+=========================================================================================================================
+                                                    NEXT QUESTION 
+=========================================================================================================================
+
+Q. 88: Simple Interest Calculator
+QUESTION DESCRIPTION
+
+Write a Java program with a function which accepts principal amount, rate of interest, and time period, and displays the simple interest to be paid.
+
+The function must throw "IllegalArgumentException" if any of the inputs is less than or equal to zero.
+
+In case of exception display the exception message
+
+The class in catch block is "IllegalArgumentException" with exception instance as "e"
+
+Print the exception if the input is zero
+TEST CASE 1
+
+INPUT
+1000 5 10
+OUTPUT
+500
+
+
+
+
+=========================================================================================================================
+
+CODE ;
+
+
+import java.util.*; 
+public class TestClass
+{
+
+
+public static void main(String[] args)
+{
+
+Scanner sc = new Scanner(System.in);
+try
+{ 
+     int a = sc.nextInt();
+     int b = sc.nextInt();
+     int c = sc.nextInt();
+     int p  =  (a*b*c)/100;
+      if(p==0 || p<0)
+     {
+         throw new IllegalArgumentException();
+     }
+     System.out.println(p);
+    
+}
+
+catch(IllegalArgumentException e)
+{
+
+System.out.println(e);
+
+}
+}
+}
+
+=========================================================================================================================
+                                                    NEXT QUESTION 
+=========================================================================================================================
+
+
+Q. 89: Divide by zero error
+QUESTION DESCRIPTION
+
+Get two integer values num1 and num2 from user and divide num1 by num2 if num2 is zero then the appropriate exception message needs to be displayed in the catch block.
+
+If the num2 is non-zero then display as "can be divided"
+
+Mandatory:
+
+1. Use try and catch block to satisfy exceptional handling techniques.
+2. Inside catch method use the following class in the argument
+
+catch(ArithmeticException e)
+
+3. Print the ArithmeticException object "e" using
+
+System.out.println(e) and it will return the output as follows "java.lang.ArithmeticException: / by zero
+TEST CASE 1
+
+INPUT
+12 4
+OUTPUT
+3
+can be divided
+
+
+
+
+=========================================================================================================================
+CODE ;
+
+
+import java.util.*; 
+public class TestClass
+{
+
+    
+public static void main(String[] args)
+{
+
+Scanner sc = new Scanner(System.in);
+ int a  = sc.nextInt();
+ int b = sc.nextInt();
+try
+
+{ 
+    int c = a/b;
+     System.out.println(c+"\ncan be divided");
+
+}
+
+catch(ArithmeticException e)
+{
+
+System.out.println(e);
+
+}
+}
+}
+
+=========================================================================================================================
+                                                    NEXT QUESTION 
+=========================================================================================================================
+
+
+Q. 90: Sum of two numbers
+QUESTION DESCRIPTION
+
+Write a Java program to read two numbers and output their sum.
+
+You need to handle "InputMismatchException" when the input given is not valid and display an error message.
+
+See examples for more details
+
+If the given input is not valid then, display the message exception
+
+Use necessary exception handling constructs for with exception class object as "e"
+TEST CASE 1
+
+INPUT
+48 27
+OUTPUT
+75
+
+
+
+=========================================================================================================================
+CODE : 
+
+
+import java.util.*; 
+public class TestClass
+{
+
+
+public static void main(String[] args)
+{
+
+Scanner sc = new Scanner(System.in);
+ 
+try
+
+{ 
+     int a = sc.nextInt();
+     int b = sc.nextInt();
+     int c =a+b;
+    System.out.println(c);
+
+}
+
+catch(InputMismatchException e)
+{
+
+System.out.print(e);
+
+}
+}
+}
+=========================================================================================================================
+                                                    OVER 
+=========================================================================================================================
+
+
+
+
+  
