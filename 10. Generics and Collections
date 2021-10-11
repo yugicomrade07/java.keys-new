@@ -1,1 +1,900 @@
+Q. 91: Word
+QUESTION DESCRIPTION
+
+Given an array of strings, return a Map<String, Integer> containing a key for every different string in the array, always with the value 0.
+For example the string "hello" makes the pair "hello":0.
+
+Mandatory:
+
+1. Use Scanner Class to get input from the user
+
+2. The Instance for Scanner Class is "sc"
+
+3. Create a Map and the instance for Map class is "wordMap" that takes two arguments
+Hint:
+Map<String,Integer> map = new TreeMap<String,Integer>();
+
+4.Create an array of String datatype and the instance of the array is "keys" and use line.split() method to split the strings.
+String []keys = line.split(" ");
+
+5.If the key is available use map.put() method of the map class to append 0 with all the strings
+Hint:
+wordMap.put(s,0);
+
+6.Use getKey and getValue methods of Map Class to get the keys and values of the keys to print the result using System.out.println class.
+
+Note: If any one of the above condition is not satisfied, then it will not show 100%
+TEST CASE 1
+
+INPUT
+You can see our solution as an alternative
+OUTPUT
+You 0
+alternative 0
+an 0
+as 0
+can 0
+our 0
+see 0
+solution 0
+
+=========================================================================================================================
+CODE ;
+
+import java.util.*;
+public class TestClass
+{
+public static void main(String[] args) {
+
+Scanner sc = new Scanner(System.in); 
+Map<String,Integer> map = new TreeMap<String, Integer>(); 
+Map<String,Integer> wordMap = new TreeMap<String,Integer>(); 
+String line = sc.nextLine();
+String []keys = line.split(" ");
+
+int len=keys.length;
+for(int i=0;i<len;i++)
+  {
+
+    String s=keys[i];
+   wordMap.put(s,0);
+
+   }
+Iterator<Map.Entry<String,Integer>> itr = wordMap.entrySet().iterator();
+while(itr.hasNext())
+{
+
+Map.Entry<String,Integer> entry = itr.next();
+System.out.println(entry.getKey()+" "+entry.getValue());
+}
+}}
+
+
+=========================================================================================================================
+                                                    NEXT QUESTION 
+=========================================================================================================================
+
+Q. 92: Collection to an array
+QUESTION DESCRIPTION
+
+Write a Java program to show how to convert a collection to an array by using list.toArray() method of Java Util class
+
+Mandatory:
+
+1. Use BufferedReader Class to get input from the user
+
+2. The Instance for BufferedReader Class is "br"
+
+3. Declare String array and store the String values in the array.
+
+4. The instance name for String array is "name"
+
+5. Create a List for String Datatype and the instance for List class is "list"
+
+6. Use Arrays.asList() method that takes argument as String array ["name"]
+
+Hint:
+List<String> list=Arrays.asList(name)
+
+7. Create a String array and uses toArray method for converting it
+
+Hint:
+list.toArray(name)
+
+
+Note: If any one of the above condition is not satisfied, then it will not show 100%
+TEST CASE 1
+
+INPUT
+9
+Bogar
+is
+the
+best
+Tamil
+Siddhar
+in
+Kumari
+Kandam
+
+OUTPUT
+Bogar is the best Tamil Siddhar in Kumari Kandam
+
+
+
+
+=========================================================================================================================
+CODE ;
+
+
+import java.io.*;
+import java.util.*;
+public class TestClass 
+{
+  public static void main(String[] args)throws IOException 
+    { 
+		 
+     BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
+       
+       int n = Integer.parseInt(br.readLine());
+    String[] name = new String[n];
+     for(int i = 0 ; i <n;i++)
+       {
+          name[i]= br.readLine();
+       } 
+    List<String> list=Arrays.asList(name);
+    list.toArray(name);
+     for(String li:list)
+       {
+          String str = li;
+         System.out.print(str+" ");
+       } 
+    
+	}
+}
+
+
+ 
+   
+
+
+
+
+=========================================================================================================================
+                                                    NEXT QUESTION 
+=========================================================================================================================
+
+Q. 93: Topping 2
+QUESTION DESCRIPTION
+
+Given a map of food keys and their topping values, modify and return the map as follows:
+
+If the key "ice cream" has a value, set that as the value for the key "yogurt" also
+
+If the key "spinach" has a value, change that value to "nuts".
+
+Mandatory:
+
+1. Use Scanner Class to get input from the user
+
+2. The Instance for Scanner Class is "sc"
+
+3. Create a Map for String Datatype and the instance for Map class is "map" that takes two arguments
+Hint:
+Map<String,String> map = new TreeMap<String,String>();
+
+4. Use containskey() method of Map class to check weather the key "ice cream" has the value.If the key ice cream has the value then set the same value for the key "yogurt"
+
+5.Use map.put() method of the map class to set the value of "icecream" key as the value of "yogurt" key.
+
+Hint:
+map.put("yogurt",map.get("icecream"));
+
+5. Use containskey() method of Map class to check weather the key "spinach" has the value then change that value to "nuts"
+
+6.Use getKey and getValue methods of Map Class to get the keys and values of the keys to print the result using System.out.println class.
+
+Note: If any one of the above condition is not satisfied, then it will not show 100%
+TEST CASE 1
+
+INPUT
+1
+icecream cherry
+OUTPUT
+icecream cherry
+yogurt cherry
+
+
+
+=========================================================================================================================
+
+CODE ;
+
+
+import java.io.*;
+import java.util.*;
+
+public class TestClass{
+public static void main(String[] args) {
+
+Scanner sc = new Scanner(System.in);
+int t = sc.nextInt();
+String s  = sc.nextLine();
+
+Map<String,String> map = new TreeMap<String,String>();
+ while(t-->0)
+  {
+   s=sc.next();
+   String s2 = sc.next();
+   map.put(s,s2);
+   }
+if(map.containsKey("icecream")) map.put("yogurt",map.get("icecream"));
+
+if(map.containsKey("spinach")) map.put("spinach","nuts");
+
+Set<String>key=map.keySet();
+
+   for(Map.Entry<String,String>entry:map.entrySet())
+  
+
+  System.out.println(entry.getKey()+" "+entry.getValue());
+    
+    
+}
+ 
+}
+
+=========================================================================================================================
+                                                    NEXT QUESTION 
+=========================================================================================================================
+
+
+Q. 94: Convert an array into collection
+QUESTION DESCRIPTION
+
+Write a program to convert an array into a collection using
+
+Arrays.asList(name) method of Java Util class.
+
+Get the input string array from the user and produce the result as list.
+
+Mandatory:
+
+1. Use BufferedReader Class to get input from the user
+
+2. The Instance for BufferedReader Class is "br"
+
+3. Declare String array and store the String values in the array.
+
+4. The instance name for String array is "name"
+
+5. Create a List for String Datatype and the instance for List class is "list"
+
+6. Use Arrays.asList() method that takes argument as String array ["name"]
+
+Hint:
+List<String> list=Arrays.asList(name)
+
+7. Use foreach loop to print the final answer
+
+Hint:
+for(String li:list)
+Where li = foreach variable and list is the instance for List Class
+
+Note: If any one of the above condition is not satisfied, then it will not show 100%
+TEST CASE 1
+
+INPUT
+6
+Dhoni
+Raina
+Bravo
+Ashwin
+Jadeja
+Faf
+OUTPUT
+Dhoni Raina Bravo Ashwin Jadeja Faf
+
+
+
+=========================================================================================================================
+CODE ;
+
+import java.io.*;
+import java.util.*;
+public class TestClass 
+{
+  public static void main(String[] args)throws Exception 
+    { 
+		 
+     BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
+       
+       int n = Integer.parseInt(br.readLine());
+    String[] name = new String[n];
+     for(int i = 0 ; i <n;i++)
+       {
+          name[i]= br.readLine();
+       } 
+    List<String> list=Arrays.asList(name);
+    
+     for(String li:list)
+       {
+          String str = li;
+         System.out.print(str+" ");
+       } 
+    
+	}
+}
+ 
+=========================================================================================================================
+                                                    NEXT QUESTION 
+=========================================================================================================================
+  
+QQ. 95: FirstChar
+QUESTION DESCRIPTION
+
+Given an array of non-empty strings, return a Map<String, String> with a key for every different first character seen, with the value of all the strings starting with that character appended together in the order they appear in the array.
+
+Mandatory:
+
+1. Use Scanner Class to get input from the user
+
+2. The Instance for Scanner Class is "sc"
+
+3. Create a Map and the instance for Map class is "map" that takes two arguments
+Hint:
+Map<String,String> map = new TreeMap<String,String>();
+
+4.Create an array of String datatype and the instance of the array is "keys" and use charAt() method to find the the stings at particular position.
+
+5.Then use map.put() method to append the first character of the string before the string.
+
+6.Use getKey and getValue methods of Map Class to get the keys and values of the keys to print the result using System.out.println class.
+
+Note: If any one of the above condition is not satisfied, then it will not show 100%
+TEST CASE 1
+
+INPUT
+salt tea soda toast
+OUTPUT
+s saltsoda
+t teatoast
+
+
+
+=========================================================================================================================
+
+CODE ;
+
+import java.util.*;
+
+public class TestClass{
+
+public static void main(String[] args) 
+
+{
+   Scanner sc = new Scanner(System.in);
+
+    Map<String,String> map = new TreeMap<String,String>();
+    String line = sc.nextLine();
+
+   String keys[] = line.split(" ");
+   int len=keys.length;
+   for(int u=0;u<len;u++)
+    {
+    String k=String.valueOf(keys[u].charAt(0));
+     if (map.containsKey(k)) 
+     {
+     String val= map.get(k) + keys[u]; map.put(k, val);
+     } 
+    else 
+    {
+      map.put(k, keys[u]);
+      } 
+    }
+   Iterator<Map.Entry<String,String>> itr = map.entrySet().iterator();
+   while(itr.hasNext()){
+
+    Map.Entry<String,String> entry = itr.next();
+  System.out.println(entry.getKey()+" "+entry.getValue());
+
+   }
+ }
+}
+
+=========================================================================================================================
+                                                    NEXT QUESTION 
+=========================================================================================================================
+
+. 96: Pairs
+QUESTION DESCRIPTION
+
+Given an array of non-empty strings, create and return a Map<String, String> as follows:
+For each string add its first character as a key with its last character as the value.
+Mandatory:
+
+1. Use Scanner Class to get input from the user
+
+2. The Instance for Scanner Class is "sc"
+
+3. Create a Map and the instance for Map class is "map" that takes two arguments
+Hint:
+Map<String,String> map = new TreeMap<String,String>();
+
+4.Create an array of String datatype and the instance of the array is "keys" and use line.split() method to split the strings.
+
+5.Use charAt() method to find the character of the string at the particular position.
+
+6.Then use map.put() method to to add first character as key and last character as value.
+
+7.Use getKey and getValue methods of Map Class to get the keys and values of the keys to print the result using System.out.println class.
+
+Note: If any one of the above condition is not satisfied, then it will not show 100%
+TEST CASE 1
+
+INPUT
+You can see our solution as an alternative
+OUTPUT
+Y u
+a e
+c n
+o r
+s n
+
+
+
+=========================================================================================================================
+
+CODE ;
+
+
+
+import java.util.*;
+
+public class TestClass {
+
+ public static void main(String[] args) { 
+    
+     Scanner sc = new Scanner(System.in);
+    Map<String,String> map = new TreeMap<String,String>(); 
+     String line =sc.nextLine();
+    String keys[] = line.split(" "); 
+  int len = keys.length;
+    for(int s=0;s<len;s++)
+{
+    int w = keys[s].length();
+
+ String a1,a2;
+
+  a1=Character.toString(keys[s].charAt(0)); 
+  a2=Character.toString(keys[s].charAt(w-1)); 
+   map.put(a1,a2);
+
+}
+
+Iterator<Map.Entry<String,String>> itr = map.entrySet().iterator();
+while(itr.hasNext())
+{
+
+Map.Entry<String,String> entry = itr.next();
+
+System.out.println(entry.getKey()+" "+entry.getValue());
+
+}
+}
+}
+
+
+
+
+=========================================================================================================================
+                                                    NEXT QUESTION 
+=========================================================================================================================
+
+Q. 97: Minimum & Maximum of a List
+QUESTION DESCRIPTION
+
+Write a Java program to find minimum & maximum of the Array List
+
+Hint:
+
+1. Import ArrayList and Collections classes under util packages
+
+2. Declare an Array List of type integer with integer and instance as "aList"
+Hint:
+ArrayList<Integer> aList = new ArrayList<Integer>()
+
+3. Add dynamic elements and in the ArrayList using add() method of ArrayList Class
+
+4. Print the List elements using the Instance of ArrayList class "aList"
+
+5. Create an Object class and store the maximum and minimum value in the list using max() method and min() method of the Collection class that takes ArrayList instance "aList" as an argument.
+
+6. The instance for Object class for finding maximum value should be "maximum" and for finding minimum value should be "minimum"
+Hint:
+Object maximum=Collections.max(aList)
+
+7. Print the Maximum and Minimum value in the list using System.out.println() method
+
+Note:
+
+To get the List elements output in Square Bracket and separated by comma, kindle use the "aList" in System.out.println() method
+TEST CASE 1
+
+INPUT
+5
+4 5 6 7 8
+OUTPUT
+List Elements are[4, 5, 6, 7, 8]
+Maximum Element=8
+Minimum Element=4
+
+
+
+
+=========================================================================================================================
+ 
+
+CODE ;
+
+import java.util.*;
+
+public class TestClass
+{
+    public static void main(String[] args) {
+
+    Scanner in = new Scanner(System.in); 
+    ArrayList<Integer>aList = new ArrayList<Integer>();
+
+int x = in.nextInt();
+
+for(int e=0;e<x;e++)
+{
+
+int a = in.nextInt();
+
+aList.add(a);
+
+}
+
+Object maximum=Collections.max(aList); 
+Object minimum=Collections.min(aList);
+
+System.out.print("List Elements are");
+System.out.println(aList);
+
+System.out.println("Maximum Element="+Collections.max(aList)); 
+System.out.println("Minimum Element="+Collections.min(aList));
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=========================================================================================================================
+                                                    NEXT QUESTION 
+=========================================================================================================================
+
+Q. 98: mapshare
+QUESTION DESCRIPTION
+
+Modify and return the map as follows:
+if the key "a" has a value, set the key "b" to have that same value.
+In all cases remove the key "c", leaving the rest of the map unchanged.
+
+Mandatory:
+
+1. Use Scanner Class to get input from the user
+
+2. The Instance for Scanner Class is "sc"
+
+3. Create a Map for String Datatype and the instance for Map class is "map" that takes two arguments
+Hint:
+Map<String,String> map = new TreeMap<String,String>();
+
+4. Use containskey() method of Map class to check weather the key "a" is available
+
+5.If the key is available use map.put() method of the map class to replace the value of the key "b" accordingly.
+
+map.put(key,value)
+map.put("b",map.get("a"));
+
+6.For Removing the key use remove method of Map Class
+
+map.remove("c");
+
+Hint:
+
+7.Use getKey and getValue methods of Map Class to get the keys and values of the keys
+
+Note: If any one of the above condition is not satisfied, then it will not show 100%
+TEST CASE 1
+
+INPUT
+3
+a aaa
+b bbb
+c ccc
+OUTPUT
+a aaa
+b aaa
+
+
+
+=========================================================================================================================
+
+CODE ;
+
+
+import java.util.*; 
+import java.io.*;
+
+class  TestClass{
+
+public static void main(String args[]){
+
+Scanner sc = new Scanner(System.in); 
+int x = sc.nextInt();
+
+Map<String,String> map = new TreeMap<String,String>();
+for(int w=0;w<x;w++)
+{
+String key = sc.next(); 
+String value = sc.nextLine();
+
+map.put(key, value);
+
+} sc.close();
+
+map = mapshare(map); Set<Map.Entry<String,String>> itr = map.entrySet();
+
+for(Map.Entry<String, String> entry: itr)
+
+{ System.out.println( entry.getKey() + entry.getValue() );
+}
+
+} 
+public static Map<String,String> mapshare(Map<String,String> map){
+if(map.containsKey("a"))
+
+{ map.put("b", map.get("a"));
+
+map.remove("c");
+
+map.remove("z");
+map.remove("d");
+
+}
+
+          else{
+
+        map.remove("c"); 
+        map.remove("z"); 
+        map.remove("d");
+}
+            return map;
+}
+}
+
+
+
+
+=========================================================================================================================
+                                                    NEXT QUESTION 
+=========================================================================================================================
+
+
+Q. 99: Remove a specific element from a collection
+QUESTION DESCRIPTION
+
+Write a Java Program to remove a specific element from a collection using collection.remove() method of Collection class.
+
+Hint :
+
+1. Import java util Iterator and ArrayList packages
+
+2.Create a Array list of type String with instance name as "aList"
+List<String> aList=new ArrayList<>();
+
+3. Input five String inputs using nextLine method of Scanner Class
+
+4. Add the Five Strings inputs to Array List using ArrayList object "aList".add() method
+
+5. Display the Array List elements using methods (aList.size() and aList.get())
+
+6. Create a Iterator class for ArrayList using
+Iterator itr=aList.iterator();
+
+7. Get the element to be deleted from the Array List.
+
+8. Iterate through while loop using Iterator class hasNext() method and get the elements from the Arraylist using next() method of Iterator Class
+
+9. Use remove() method of Iterator class to remove the element
+
+10. Now display the updated Array List elements using methods (aList.size() and aList.get())
+TEST CASE 1
+
+INPUT
+Tamil
+the
+Mother
+of all
+Languages
+the
+OUTPUT
+ArrayList before removal:
+Tamil
+the
+Mother
+of all
+Languages
+ArrayList after removal : 
+Tamil
+Mother
+of all
+Languages
+
+
+=========================================================================================================================
+CODE : 
+
+
+import java.io.*;
+import java.util.*;
+public class TestClass {
+	 public static void main(String[] args) { 
+	   
+       List<String> aList=new ArrayList<>();
+       Scanner sc = new Scanner(System.in);
+      
+		aList.add(sc.nextLine());
+       	aList.add(sc.nextLine());
+       	aList.add(sc.nextLine());
+        aList.add(sc.nextLine());
+       	aList.add(sc.nextLine());
+
+       	System.out.println("ArrayList before removal:");
+        for (int i =0;i < aList.size();i++)
+          	System.out.println(aList.get(i));
+       
+        Iterator itr = aList.iterator();
+        
+        String ele = sc.nextLine();
+       
+        while(itr.hasNext())
+        {
+         String str = (String)itr.next();
+         if (str.equals(ele))
+         {
+            itr.remove();
+         }
+      	}
+        System.out.println("ArrayList after removal : ");
+       	for (int i = 0; i < aList.size();i++)
+          	System.out.println(aList.get(i));
+       
+	}
+}
+
+=========================================================================================================================
+                                                    NEXT QUESTION 
+=========================================================================================================================
+
+Q. 100: Reverse Linked List using Array - Integer
+QUESTION DESCRIPTION
+
+Iterate through LinkedList and returns an Iterator object in reverse order
+
+Hint:
+
+1. Import Iterator and LinkedList Class of util packages
+
+2. Declare a LinkedList class of type Integer and the instance name as "list"
+
+3. Get the String input from the user and store it using add() method of LinkedList class
+
+4. Print the Linked List Elements Using using LinkedList instance "list" in System.out.println() method
+
+5. Declare a Iterator String class and iterate the List elements using descendingIterator() method of LinkedList class
+Hint:
+Iterator<Integer> itr=list.descendingIterator()
+
+6. Iterate the List elements using hasNext() method and print the reverse elements using next() method
+
+7. As Step 5 has already reversed the elements, now print the elements using next() method
+TEST CASE 1
+
+INPUT
+5
+4 9 1 2 -7
+OUTPUT
+Linked List Elements are[4, 9, 1, 2, -7]
+-7
+2
+1
+9
+4
+TEST CASE 2
+
+INPUT
+15
+4 9 1 2 -7 9 3 2 4 5 4 3 1 6 7
+OUTPUT
+Linked List Elements are[4, 9, 1, 2, -7, 9, 3, 2, 4, 5, 4, 3, 1, 6, 7]
+7
+6
+1
+3
+4
+5
+4
+2
+3
+9
+-7
+2
+1
+9
+4
+
+==============================================================================================================================
+
+code : 
+
+import java.util.*;
+
+import java.io.*;
+
+public class TestClass 
+{
+
+public static void main(String[] args) {
+
+Scanner in = new Scanner(System.in);
+
+LinkedList<Integer> list = new LinkedList<Integer>();
+
+int x = in.nextInt();
+for(int e=0;e<x;e++)
+{
+
+int r=in.nextInt();
+
+list.add(r);
+
+}
+
+System.out.println("Linked List Elements are" +list); 
+for( Iterator<Integer> itr=list.descendingIterator(); itr.hasNext();)
+{ System.out.println(itr.next());
+}
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+=========================================================================================================================
+                                                    OVER 
+=========================================================================================================================
+
+
 
