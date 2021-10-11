@@ -1,8 +1,8 @@
 click that view code 👆👆👆👆👆👆👆👆
 
 
-👋 Hi, I’m Yugendran 
-👀 wait .. for further updates
-
-
-Read and use it for your references....   :).
+👋 Hi, I’m S.Yugendran (@yugicomrade07)
+👀 I’m interested in programming ...
+🌱 I’m currently learning java,java script...
+💞️ I’m looking to collaborate on internet things ...
+📫 How to reach me --- ping me on gmail -> syugendranprogrammer@gmail.com ...
